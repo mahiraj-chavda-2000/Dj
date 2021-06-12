@@ -24,7 +24,7 @@
       var text = "";
       var i;
       for (i = 0; i < count; i++) {
-          text += "<div class='count'>Number of Members: <input type='text' name='member[]' id='member_"+i+"' required>percentage: <input type='text' name='pr[]' id='pr_"+i+"' required><button class='a' onclick='del(this)'>-</button></div></br>";} 
+          text += "<div class='count'>Number of Members: <input type='text' name='member[]' id='member_"+i+"' >percentage: <input type='text' name='pr[]' id='pr_"+i+"' ><button class='a' onclick='del(this)'>-</button></div></br>";} 
       document.getElementById("clone").innerHTML = text;}
   var forms = document.getElementById("myForm");
   forms.addEventListener('submit', function (event) {
