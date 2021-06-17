@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10</title>
+</head>
+
+<body>
+    <button id="button" onclick="duplicate()">+</button>
+    <form id="myForm" method="POST">
+        <div id="test">
+
+            <input type="submit" value="save">
+        </div>
+
+<input id='member_0' type="text" placeholder=" Number of Members:" name="member[]">
+<input id='pr_0' type="text" placeholder=" Number of Members:" name="pr[]">
+<button id='0' onclick='del(this.id)'>-</button>  
+<div id="br_0"><br> </div>
+</form>
+
+    <script>
+
+
+        var i = 1;
+        var m = document.getElementById('member_0');
+        var p = document.getElementById('pr_0');
+        var d = document.getElementById('0');
+        var br= document.getElementById('br_0');
+
+            function duplicate() {
+                
+                
+                var m1 = m.cloneNode(true);
+                var p1 = p.cloneNode(true);
+                var d1 = d.cloneNode(true);
+                var b1 = br.cloneNode(true);
+
+                m1.id = "member_" + i;
+                p1.id = "pr_" + i;
+                d1.id = i;
+                b1.id = "br_"+i++;
+                
+                document.body.append(m1);
+                document.body.append(p1);
+                document.body.append(d1);
+                document.body.append(b1);
+            }
+            
+        function del(id) {
+            document.getElementById("member_"+id).remove();
+            document.getElementById("pr_"+id).remove();
+             document.getElementById("br_" + id).remove();
+            document.getElementById(id).remove();
+        }
+            document.getElementById("member_" + 0).remove();
+            document.getElementById("pr_" + 0).remove();
+            document.getElementById("br_" + 0).remove();
+            document.getElementById(0).remove();
+
+        var forms = document.getElementById("myForm");
+        forms.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+
+            var totalCloneElem = document.getElementsByClassName('dupli').length;
+            var data = new FormData();
+            for (i = 1; i <= totalCloneElem; i++) {
+                // data.append('id[]', document.getElementById("id_" + i + "").value);
+                data.append('member[]', document.getElementById("member_").value);
+                data.append('pr[]', document.getElementById("pr_").value);
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '10.php');
+            xhr.onload = function () {
+                console.log(this.response);
+            }
+            xhr.send(data);
+            return false;
+
+
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
